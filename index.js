@@ -2,8 +2,11 @@ require('dotenv').config()
 
 const express = require('express');
 const app = express();
+const cors = require('cors')
 const bodyParser = require('body-parser');
 const connection = require('./database');
+
+app.use(cors());
 
 app.get('/', (req,res) => res.send('Try: /status, /fetch-receita, or /fetch-ingrediente') );
 
