@@ -14,7 +14,12 @@ app.get('/status', (req, res) => res.send('Success.') );
 
 app.get('/fetch-receita', (req, res) => {
   connection.query(
-    "SELECT * FROM `refeicoes`.`receita`",
+    `SELECT *
+    FROM   receita
+           JOIN receita_ingrediente
+             ON receita_ingrediente.receita = receita.id_receita
+           JOIN ingrediente
+             ON receita_ingrediente.ingrediente = id_ingrediente;`,
     (error, results, fields) => {
       if(error) throw error;
       res.json(results);
