@@ -1,20 +1,12 @@
 const mysql = require('mysql');
 
 var config = {
-    user: process.env.DB_USER,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASS,
+    user: 'dbfavorito_metalmany',
+    database: 'dbfavorito_metalmany',
+    username: "dbfavorito_metalmany",
+    password: 'e0a86c0e26374b6a4cdbb0273a7935095d41bc3c',
+    port: '3307'
 };
-
-if(process.env.NODE_ENV === 'production') {
-  console.log('Running from cloud. Connecting to DB through GCP socket.');
-  config.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
-}
-
-else {
-  console.log('Running from localhost. Connecting to DB directly.');
-  config.host = process.env.DB_HOST;
-}
 
 let connection = mysql.createConnection(config);
 
