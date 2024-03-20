@@ -1,21 +1,22 @@
-const mysql = require('mysql');
+var mysql = require("mysql");
 
-var config = {
-    user: 'dbfavorito_metalmany',
-    database: 'dbfavorito_metalmany',
-    username: "dbfavorito_metalmany",
-    password: 'e0a86c0e26374b6a4cdbb0273a7935095d41bc3c',
-    port: '3307'
-};
+var hostname = "6ed.h.filess.io";
+var database = "dbresidencia_brothersat";
+var port = "3307";
+var username = "dbresidencia_brothersat";
+var password = "8ceb494eb4217b16bdde123b6ad619eb9a8d2cbb";
 
-let connection = mysql.createConnection(config);
-
-connection.connect(function(err) {
-  if (err) {
-    console.error('Error connecting: ' + err.stack);
-    return;
-  }
-  console.log('Connected as thread id: ' + connection.threadId);
+var con = mysql.createConnection({
+  host: hostname,
+  user: username,
+  password,
+  database,
+  port,
 });
 
-module.exports = connection;
+con.connect(function (err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
+module.exports = con;

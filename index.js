@@ -29,7 +29,7 @@ app.get('/fetch-receita', (req, res) => {
 
 app.get('/fetch-ingrediente', (req, res) => {
   connection.query(
-    "SELECT * FROM `refeicoes`.`ingrediente`",
+    "SELECT * FROM ingrediente",
     (error, results, fields) => {
       if(error) throw error;
       res.json(results);
@@ -37,7 +37,7 @@ app.get('/fetch-ingrediente', (req, res) => {
   );
 });
 
-const port = connection.config.port;
+const port = 8080;
 app.listen(port, () => {
    console.log(`App is running at: http://localhost:${port}`);
 });
